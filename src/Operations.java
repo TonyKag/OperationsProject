@@ -1,12 +1,11 @@
 import java.util.Scanner;
 
 /**
- * @author Tony
+ * @author Tony Yutaka
  *
  */
 public class Operations {
 	// Store input values from command line or run configuration
-	// inside variables with more meaniful name
 	private String operation;
 	private String input1;
 	private String input2;
@@ -58,8 +57,18 @@ public class Operations {
 	 */
 	public static void main(String[] args) {
 		Operations op = new Operations();
-		op.inputValues();
-		op.operating();	
+		if(args.length == 0) {
+			op.inputValues();
+		}
+		else {
+			op.setOperation(args[0]);
+			op.setInput1(args[1]);
+			op.setInput2(args[2]);
+			// Convert the String values for input into Double type numbers
+			op.setNum1(Double.parseDouble(op.getInput1()));
+			op.setNum2(Double.parseDouble(op.getInput2()));
+		}
+		op.operating();
 	}
 
 	/**
